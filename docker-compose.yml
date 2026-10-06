@@ -22,6 +22,9 @@ services:
     environment:
       - POSTGRES_USER=postgis_admin
       - POSTGRES_PASS=postgis_admin_password
+      - GEOSERVER_DATA_DIR=/var/local/geoserver
+    volumes:
+      - geoserver_configs:/var/local/geoserver
     networks:
       - postgis-network
     depends_on:
@@ -30,3 +33,6 @@ services:
 networks:
   postgis-network:
     driver: bridge
+
+volumes:
+  geoserver_configs:
